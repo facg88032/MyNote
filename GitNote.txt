@@ -1,0 +1,78 @@
+建置GIT
+git config --global user.name "name" 設定用戶名
+git config --global user.email "email" 設定用戶EMAIL
+git config "name" 查看用戶名
+git config "email" 查看EMIALL
+
+到你所要資料夾
+git init 初始化創建.git
+ls -a 可以看到當前資料夾的檔案
+
+open .git MAC版激活
+start .git LINUX版激活
+
+touch file.program language 創建文件
+
+git status 看見版本庫的當前狀態
+git status -s 簡單化觀看狀態
+
+git add file  將檔案從unstage到stage狀態
+git add.    將當前所有檔家到stage 狀態
+
+git commit -am "MESSAGE" add 所有改便並直接 commit
+git commit -m "MESSAGE" 提交並給這次的動作給予訊息名
+git commit --amend --no-edit 
+當已經commit上去 但可能你有部分檔忘了add 或是新創檔案 但還沒有add 
+導致那版你沒有跟著提交 就能用這指令跟上次的commit合併 
+
+
+
+git checkout commitID -- file  將指定file回到commitID版本狀態
+git checkout branchName 切換到branchName的分支
+git checkout -b branchName  多了-b(build)也就是直接創建並轉到創建的分支上
+ 
+
+it log 查看版本庫施工得過程記錄
+git log --oneline 簡單化觀看過程
+git log --oneline --graph 附帶圖像化
+
+
+#當檔案被修改就會變回到unstage的狀態#
+
+git diff 當要查看還 沒add(unstage)的修改部分 跟上次commit得檔案有何不同時使用
+git diff --cached 可以查看 已經add(stage) 跟上次commit得檔案有何不同時使用
+git diff HEAD 同時看 沒add(unstage)& add(stage) 跟上次commit得檔案有何不同時使用
+
+git reset file 將檔案從stage回到unstage狀態
+git reset --hard HEAD 將指標回到上一個commit(當commit 檔案會處於unmodify 而此時已經變回unstage狀態)
+git reset --hard HEAD^ 當有幾個^ 就往前幾次 
+git reset --hard HEAD~number 當number為多少就是往回幾次
+git reset --hard commitID 直接指定到ID對應的commit
+
+git reflog 可以觀看所有操作紀錄 而紀錄上也有各commitID
+
+
+
+git branch branchName 創建分支並且給予一個名稱
+git branch 查看當前所有分支 而有前頭有*表示現在處於的分支位置
+git branch -D branchName 強制刪除分支
+git merge branchName 將分支連回到master   *直接merge 不會有 commit 信息. log 不會有分支的圖案
+git merge --no-ff -m "MESSAGE" branchNameh 採取 --no-ff 这种方式保留 merge 的 commit 信息.
+
+merge 分支衝突
+可能分支修改同時 master主幹也在被修改 
+此時merge合併就會發現兩邊各會缺少部分東西無法去做合併 
+這時必須手動開檔案 git會把兩邊所新增的東西顯示出來 
+必須手動調整 然後重新commit 才會完成merge
+
+rebase 分支衝突
+當B與C不同分支都基於A時，可能B發現BUG修改 但C還是基於A未被修改的版本，
+為了讓C變為基於B版本 因此使用
+git rebase branchName 
+此時合併就會發現兩邊各會缺少部分東西無法去做合併(此時的分支會被丟到特定區域佔存著)
+這時必須手動開檔案 git會把兩邊所新增的東西顯示出來 
+必須手動調整 調整完add後 
+gir rebase --continue 就會繼續rebase
+
+git stash 讓你add中(stage)的檔案 放到特殊暫存區 使的commit時不會傳上去
+git stash pop 將特殊暫存區的檔案叫回來
