@@ -76,3 +76,6 @@ gir rebase --continue 就會繼續rebase
 
 git stash 讓你add中(stage)的檔案 放到特殊暫存區 使的commit時不會傳上去
 git stash pop 將特殊暫存區的檔案叫回來
+
+git remote add origin https://github.com/"AcountID"/"repositoryName".git 設定上傳點 只須設定一次
+git push -u origin master 上傳支線
