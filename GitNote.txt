@@ -1,8 +1,8 @@
-建置GIT
+﻿建置GIT
 git config --global user.name "name" 設定用戶名
 git config --global user.email "email" 設定用戶EMAIL
-git config "name" 查看用戶名
-git config "email" 查看EMIALL
+git config user.name "name" 查看用戶名
+git config user email "email" 查看EMIALL
 
 到你所要資料夾
 git init 初始化創建.git
